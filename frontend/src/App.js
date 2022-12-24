@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { createItem, getItems, deleteItems } from './functions';
+import { getItems } from './functions';
+import Uploader from './components/Upload';
 
 function App() {
-  const [files, setFiles] = useState([[]])
   const [items, setItems] = useState([])
   const [reload, setReload] = useState(true)
   useEffect(() => {
@@ -14,30 +14,9 @@ function App() {
     fetchData()
   }, [reload])
 
-  const onSubmitHandler = async (e) => {
-    e.preventDefault();
-    await createItem(files);
-    setReload(!reload);
-  }
-  const Delete = async (e) => {
-    e.preventDefault();
-    await deleteItems();
-    setReload(!reload);
-  }
   return (
     <>
-    <div className='app'>
-      <form action="" onSubmit={onSubmitHandler}>
-        <input
-          type="file"
-          label="Image"
-          onChange={(e) => setFiles(Array.from(e.currentTarget.files))}
-          multiple
-        />
-        <button>Submit</button>
-      </form> 
-      <button onClick={(e) => Delete(e)}>Delete All</button>
-    </div>
+    <Uploader reload = {reload} setReload = {setReload}/>
     {items?.map(item => (
       <div className="card" key={item._id}>
       <div className="card-image waves-effect waves-block waves-light">
