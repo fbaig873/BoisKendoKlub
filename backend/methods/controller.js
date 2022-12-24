@@ -1,6 +1,6 @@
 import Item from "./models.js";
 export const getItems = async(req,res) => {
-    console.log('get items')
+    console.log('get items');
     try {
         const item =await Item.find()
         res.status(200).json(item);
@@ -9,6 +9,7 @@ export const getItems = async(req,res) => {
     }
 }
 export const createItems = async(req,res) => {
+    console.log('create items');
     const body = req.body;
     try{
         const newImage = await Item.create(body)
@@ -20,6 +21,7 @@ export const createItems = async(req,res) => {
 }
 
 export const deleteAll = async(req,res) => {
+    console.log('delete items');
     try {
         await Item.deleteMany();
         res.status(201).json({});
