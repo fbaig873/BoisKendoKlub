@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { getItems } from './functions';
-import Uploader from './components/Upload';
+import { getItems } from './Functions';
+import Header from './components/Header';
 import Card from './components/Card';
 
 function App() {
   const [items, setItems] = useState([])
   const [reload, setReload] = useState(true)
+  const [filter, setFilter] = useState("")
   useEffect(() => {
     const fetchData = async () => {
       const result = await getItems();
@@ -18,8 +19,8 @@ function App() {
   return (
     <>
     <div class="bg-offwhite">
-      <Uploader reload = {reload} setReload = {setReload}/>
-      <Card items = {items} />
+      <Header reload = {reload} setReload = {setReload} setFilter = {setFilter} />
+      <Card items = {items} currentFilter = {filter} />
     </div>
     
       {/* <div className="card" key={item._id}>

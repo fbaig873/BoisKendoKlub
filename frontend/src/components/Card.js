@@ -1,4 +1,4 @@
-export default function Card({items}) {
+export default function Card({items, currentFilter}) {
     return (
         <>
         <div class="flex justify-center pt-3">
