@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getItems } from './functions';
 import Uploader from './components/Upload';
+import Card from './components/Card';
 
 function App() {
   const [items, setItems] = useState([])
@@ -16,17 +17,19 @@ function App() {
 
   return (
     <>
-    <Uploader reload = {reload} setReload = {setReload}/>
-    {items?.map(item => (
-      <div className="card" key={item._id}>
+    <div class="bg-offwhite">
+      <Uploader reload = {reload} setReload = {setReload}/>
+      <Card items = {items} />
+    </div>
+    
+      {/* <div className="card" key={item._id}>
       <div className="card-image waves-effect waves-block waves-light">
       <img className="activator" src={item.image} alt="" />
       </div>
       <div className="card-content">
       <span className="card-title activator grey-text text-darken-4">{item.title}</span>
       </div>
-      </div>
-    ))}
+      </div> */}
     </>
   )
 }

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { createItem, deleteItems } from '../functions';
 
 function Uploader({reload, setReload}) {
-    const [files, setFiles] = useState([[]])
+    const [files, setFiles] = useState([[]]);
 
     const onSubmitHandler = async (e) => {
         e.preventDefault();
@@ -15,20 +15,25 @@ function Uploader({reload, setReload}) {
         setReload(!reload);
     }
     return (
-        <><div className='app' class="pt-5">
+        <><div 
+        class="flex justify-end pt-5 px-4 space-x-2 > * + *">
         <form action="" onSubmit={onSubmitHandler}>
             <input
             type="file"
-            label="Image"
             onChange={(e) => setFiles(Array.from(e.currentTarget.files))}
             multiple
+            accept="image/*"
+            class = "h-8"
             />
             <button
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4">
+                class="h-8 bg-maya hover:bg-navy text-offwhite font-bold px-2">
                 Submit
             </button>
         </form> 
-        <button onClick={(e) => Delete(e)}>Delete All</button>
+        <button 
+            onClick={(e) => Delete(e)}
+            class="h-8 bg-red hover:bg-darkred text-offwhite font-bold w-auto px-2"
+        >Delete All</button>
         </div></>
     )
 }
