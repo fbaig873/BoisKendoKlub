@@ -29,11 +29,12 @@ export const getItems = async () => {
     }
 }
 
-export const createItem = async (todo) => {
+export const createItem = async (files, tag) => {
+    console.log(files);
     try {
-        for (const file of todo) {
+        for (const file of files) {
             const base64 = await convertToBase64(file);
-            const upload = {title:Date.now() + '-' + file.name, image:base64}
+            const upload = {title:Date.now() + '-' + file.name, image:base64, tags:tag}
             const {data} = await apiCreateItem(upload);
             console.log(data)
         }

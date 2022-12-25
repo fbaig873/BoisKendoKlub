@@ -8,7 +8,7 @@ export default function Card({items}) {
                 <img
                     class="object-cover w-full h-48"
                     src={item.image}
-                    alt="image"
+                    alt="This is something"
                 />
                 <div class="p-4">
                     <h4 class="text-xl font-semibold tracking-tight text-yellow text-center">
