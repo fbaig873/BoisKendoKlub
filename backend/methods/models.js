@@ -2,7 +2,8 @@ import mongoose from 'mongoose';
 const itemSchema = mongoose.Schema(
 {
     title:String,
-    image: String
+    image: String,
+    tags: [String]
 })
 
 const Item = mongoose.model('Item',itemSchema);
