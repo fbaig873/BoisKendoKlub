@@ -1,7 +1,7 @@
 function TagsInput({tags, setTags}){    
     function handleKeyDown(e){
         if(e.key !== ' ') return
-        const value = e.target.value
+        const value = e.target.value.toLowerCase()
         if(!value.trim()) return
         setTags([...tags, value])
         e.target.value = ''

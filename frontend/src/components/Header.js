@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { createItem, deleteItems } from '../functions';
+import { createItem, deleteItems } from '../Functions';
 import TagsInput from './Tags';
 
-function Uploader({reload, setReload}) {
+function Header({reload, setReload, setFilter}) {
     const [files, setFiles] = useState([[]]);
     const [tags, setTags] = useState([])
 
@@ -13,6 +13,7 @@ function Uploader({reload, setReload}) {
         setReload(!reload);
         setFiles([[]])
         e.target.value = null
+        setTags([])
     }
     const Delete = async (e) => {
         e.preventDefault();
@@ -22,7 +23,12 @@ function Uploader({reload, setReload}) {
     }
     return (
         <><div class="flex flex-row justify-end pt-5 px-4 space-x-2 > * + *">
-        
+        <input
+            type="search"
+            class="float-left h-8 pl-1"
+            placeholder='Search for tags'
+            onChange={(e) => {setFilter(e.target.value)}}
+        />
         <form id="image-uploader">
             <input
             type="file"
@@ -46,4 +52,4 @@ function Uploader({reload, setReload}) {
     )
 }
 
-export default Uploader
+export default Header
