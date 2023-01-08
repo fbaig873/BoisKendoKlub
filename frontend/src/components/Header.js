@@ -22,7 +22,7 @@ function Header({reload, setReload, setFilter}) {
         <input
             type="search"
             class="float-left h-10 p-1 m-4 outline-1 pl-1"
-            placeholder='Search for tags'
+            placeholder='Search for a tag'
             onChange={(e) => {setFilter(e.target.value)}}
         />
         <div class="flex flex-row justify-end pt-5 px-4 space-x-2 > * + *">
