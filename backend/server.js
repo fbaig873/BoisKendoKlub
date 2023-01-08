@@ -11,7 +11,7 @@ app.use(express.urlencoded({limit: "4mb",extended:true}));
 app.use(cors())
 app.use('/items',router)
 
-const mongodb = CONNECTION_TOKEN;
+const mongodb = process.env.CONNECTION_TOKEN;
 const PORT = 5000;
 mongoose.connect(mongodb, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => app.listen(PORT,console.log(`Server running on ${PORT}`)))
