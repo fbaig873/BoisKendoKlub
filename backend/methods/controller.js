@@ -21,9 +21,20 @@ export const createItems = async(req,res) => {
 }
 
 export const deleteAll = async(req,res) => {
-    console.log('delete items');
+    console.log('deleting all items');
     try {
         await Item.deleteMany();
+        res.status(201).json({});
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+}
+
+export const deleteOne = async(req,res) => {
+    const img_title = req.query.id;
+    console.log('deleting', img_title);
+    try {
+        await Item.deleteOne({title: img_title });
         res.status(201).json({});
     } catch (error) {
         res.status(400).json({ message: error.message });
