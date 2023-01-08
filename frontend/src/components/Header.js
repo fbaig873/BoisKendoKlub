@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { createItem, deleteItems } from '../Functions';
+import { createItem } from '../Functions';
 import TagsInput from './Tags';
 
 function Header({reload, setReload, setFilter}) {
@@ -16,13 +16,7 @@ function Header({reload, setReload, setFilter}) {
         setTags([])
         alert("Submitted files");
     }
-    const Delete = async (e) => {
-        console.log(Object.keys(files).length);
-        // e.preventDefault();
-        // await deleteItems();
-        // setReload(!reload);
-        // setFiles([[]])
-    }
+    
     return (
         <>
         <input
@@ -51,12 +45,6 @@ function Header({reload, setReload, setFilter}) {
             }
             <TagsInput tags={tags} setTags={setTags}/>
         </form>
-        
-        <button 
-            onClick={(e) => Delete(e)}
-            // onClick={console.log(files)}
-            class="h-8 bg-red hover:bg-darkred text-offwhite font-bold w-auto px-2"
-        >Delete All</button>
         </div></>
     )
 }

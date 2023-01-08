@@ -14,7 +14,7 @@ return new Promise((resolve, reject) => {
 }
 
 
-const url = "http://localhost:5000/items/"
+const url = "https://boiskendoklub.herokuapp.com/items/"
 
 export const apiGetItems = () => axios.get(url);
 export const apiCreateItem = (item) => axios.post(url,item);

@@ -21,6 +21,7 @@ export default function Card({reload, setReload, items, currentFilter}) {
                     }
                 }
             }
+            return item;
         }).map(item => (
             <div class="bg-maya text-white w-full rounded-xl shadow-md lg:max-w-sm h-64">
                 <img
@@ -29,7 +30,7 @@ export default function Card({reload, setReload, items, currentFilter}) {
                     alt="This is something"
                 />
                 <div class="px-1 h-16">
-                <a class='float-right cursor-pointer' onClick={(e) => {HandleClick(e, item.title)}}>X</a>
+                <p class='float-right cursor-pointer' onClick={(e) => {HandleClick(e, item.title)}}>X</p>
                 <h4 class="text-xl font-semibold tracking-tight text-yellow text-center">
                     {item.title}
                 </h4>
