@@ -1,19 +1,38 @@
-export default function Card({items, currentFilter}) {
+import {deleteOne} from '../Functions';
+
+export default function Card({reload, setReload, items, currentFilter}) {
+    const HandleClick = async (e, title) => {
+        e.preventDefault();
+        await deleteOne(title);
+        setReload(!reload);
+        alert("Deleted item");
+    }
     return (
         <>
         <div class="flex justify-center pt-3">
-        <div class="grid grid-cols-3 gap-8">
-        {items?.map(item => (
+        <div class="grid grid-cols-4 gap-8">
+        {items?.filter((item) => {
+            if(currentFilter === "" || item.tags.length === 0) {
+                return item
+            } else {
+                for(let i = 0; i < item.tags.length; ++i) {
+                    if(item.tags[i].includes(currentFilter)) {
+                        return item;
+                    }
+                }
+            }
+        }).map(item => (
             <div class="bg-maya text-white w-full rounded-xl shadow-md lg:max-w-sm h-64">
                 <img
                     class="object-cover w-full h-48"
                     src={item.image}
                     alt="This is something"
                 />
-                <div class="p-4">
-                    <h4 class="text-xl font-semibold tracking-tight text-yellow text-center">
-                        {item.title}
-                    </h4>
+                <div class="px-1 h-16">
+                <a class='float-right cursor-pointer' onClick={(e) => {HandleClick(e, item.title)}}>X</a>
+                <h4 class="text-xl font-semibold tracking-tight text-yellow text-center">
+                    {item.title}
+                </h4>
                 </div>
             </div>
         ))}

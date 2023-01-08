@@ -19,6 +19,9 @@ const url = "http://localhost:5000/items/"
 export const apiGetItems = () => axios.get(url);
 export const apiCreateItem = (item) => axios.post(url,item);
 export const apiDeleteItems = () => axios.delete(url);
+export const apiDeleteOne = (title) => axios.delete(url + "one?id=" + title);
+
+
 
 export const getItems = async () => {
     try {
@@ -46,6 +49,15 @@ export const createItem = async (files, tag) => {
 export const deleteItems = async () => {
     try {
         const {data} = await apiDeleteItems();
+        return data;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const deleteOne = async (title) => {
+    try {
+        const {data} = await apiDeleteOne(title);
         return data;
     } catch (error) {
         console.log(error)

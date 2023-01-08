@@ -13,7 +13,7 @@ function TagsInput({tags, setTags}){
     }
 
     return (
-        <div class="pb-1 border rounded-sm flex flex-wrap gap-2 h-9 text-s">
+        <div class="pb-1 border rounded-sm flex flex-wrap gap-2 h-10 text-s">
             { tags.map((tag, index) => (
                 <div className="inline-block p-2 rounded-2xl" key={index}>
                     <span className="text">{tag}</span>

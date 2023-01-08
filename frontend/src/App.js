@@ -18,9 +18,9 @@ function App() {
 
   return (
     <>
-    <div class="bg-offwhite">
+    <div class="bg-offwhite w-screen h-screen">
       <Header reload = {reload} setReload = {setReload} setFilter = {setFilter} />
-      <Card items = {items} currentFilter = {filter} />
+      <Card reload = {reload} setReload = {setReload} items = {items} currentFilter = {filter} />
     </div>
     
       {/* <div className="card" key={item._id}>
