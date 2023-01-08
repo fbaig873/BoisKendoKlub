@@ -12,7 +12,6 @@ app.use(cors())
 app.use('/items',router)
 
 const mongodb = process.env.CONNECTION_TOKEN;
-const PORT = 5000;
 mongoose.connect(mongodb, { useNewUrlParser: true, useUnifiedTopology: true })
-.then(() => app.listen(PORT,console.log(`Server running on ${PORT}`)))
+.then(() => app.listen(process.env.PORT || 5000))
 .catch(err => console.log(err));
